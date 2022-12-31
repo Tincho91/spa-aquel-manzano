@@ -1,0 +1,10 @@
+@use '../custom' as *;
+
+.footer {
+    background-color: $background;
+    bottom: 0;
+
+    .icon {
+        font-size: 30;
+    }
+}

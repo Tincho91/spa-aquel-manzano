@@ -1,0 +1,17 @@
+@use 'custom';
+
+
+// IMPORTACION DE SECCIONES
+
+@use './sections/navBar';
+@use './sections/landingCarrousel';
+@use './sections/footer';
+@use './sections/itemListContainer';
+//@use './sections/ItemDetailContainer';
+
+
+// IMPORTACION DE COMPONENTES
+
+@use './components/loadingSpinner';
+
+//@use './components/loadingSpinner';

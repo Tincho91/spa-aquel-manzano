@@ -1,0 +1,16 @@
+// COLOR PALETTE
+
+$boy        :           #6486ff;
+$girl       :           #e462a9;
+$neutral    :           #64daff;
+$background :           #fae6eb;
+$green      :           #77b255;
+$red        :           #dd2e44;
+
+
+
+$primary :  $boy;
+$alert   :  $red;
+
+
+@import "../../node_modules/bootstrap/scss/bootstrap.scss";

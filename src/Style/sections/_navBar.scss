@@ -1,0 +1,29 @@
+@use '../custom' as *;
+
+.navbar {
+    background-color: $background;
+
+    &--brand {
+
+        &--logo{
+            width: 8rem;
+        }
+    }
+
+    &--toggler {
+
+        &--items {
+
+            &--link {
+                font-size: 1.5rem;
+                text-decoration: none;
+                transition: 0.3s;
+
+                &:hover {
+                    text-shadow: 0 0 15px #FFFFFF;
+                    transform: scale(1.05);
+                }
+            }
+        }
+    }
+}
