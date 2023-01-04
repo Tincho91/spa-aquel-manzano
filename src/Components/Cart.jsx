@@ -23,7 +23,7 @@ export const Cart = () => {
       });
     } catch (error) {
       console.error(error);
-      // Show user-friendly error message
+      // Mensaje de error.
       Swal.fire({
         title: "Error",
         text: "No se pudo actualizar el stock de los productos. Inténtalo de nuevo más tarde.",
@@ -33,7 +33,7 @@ export const Cart = () => {
   }
 
   const createOrder = () => {
-    // Show SweetAlert2 form to enter buyer's name, email, and phone number
+    // Input para nombre, email y teléfono. (SIMPLE)
     Swal.fire({
       title: 'Confirmar compra',
       html: `
@@ -46,12 +46,12 @@ export const Cart = () => {
       cancelButtonText: 'Cancelar'
     }).then(async (result) => {
       if (result.value) {
-        // If the user confirms the order, get the buyer's name, email, and phone number from the form
+        // Cuando el usuario confirma, toma los datos.
         const name = document.getElementById('name').value;
         const email = document.getElementById('email').value;
         const phone = document.getElementById('phone').value;
   
-        // Create the order object with the buyer's name, email, and phone number, along with the order items and total
+        // Crea una orden, con name, email, and phone number, tambien con sus items y el total
         const order = {
           buyer: {
             name,
@@ -73,7 +73,7 @@ export const Cart = () => {
             const newOrderRef = doc(collection(db, "orders"))
             await setDoc(newOrderRef, order);
 
-            // Show SweetAlert2 success message
+            // Alerta de exito
             Swal.fire({
               title: "Compra realizada",
               text: "Gracias por su compra!",
@@ -81,7 +81,7 @@ export const Cart = () => {
             });
           } catch (error) {
             console.error(error);
-            // Show SweetAlert2 error message
+            // Alerta de error
             Swal.fire({
               title: "Error",
               text: "No se pudo realizar la compra. Inténtalo de nuevo más tarde.",
@@ -93,7 +93,7 @@ export const Cart = () => {
         .then(result => {
           updateStock(order);
 
-          // Clear the cart
+          // Limpiar el carrito
           setCart([]);
         });
       }
@@ -114,7 +114,7 @@ export const Cart = () => {
 
   return (
     <Container fluid>
-      {/* Mostrar una tabla con los productos en el carrito */}
+      {/* Tabla con los productos en el carrito */}
       <Table striped bordered hover className='text-center'>
         <thead>
           <tr>
@@ -147,7 +147,7 @@ export const Cart = () => {
       </Table>
       {/* Mostrar el costo total */}
       <p>Total: ${getTotal()}</p>
-      {/* Mostrar un botón de checkout */}
+      {/* Botón de checkout */}
       <Button onClick={createOrder}>Proceder al checkout</Button>
       <Button as={Link} to="/tienda">Volver a la tienda</Button>
     </Container>
