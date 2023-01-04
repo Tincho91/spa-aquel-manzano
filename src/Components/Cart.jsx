@@ -1,18 +1,36 @@
 import React from 'react';
 import Swal from 'sweetalert2';
-import { doc, setDoc, collection} from "firebase/firestore";
+import { doc, getDocs, setDoc, collection, serverTimestamp, increment, updateDoc} from "firebase/firestore";
 import { db } from '../dataBase/firebaseConfig';
 import { useContext } from 'react';
 import { CartContext } from '../Contexts/CartContext';
 import { Button, Table, Container } from 'react-bootstrap';
 import { FaPlus, FaMinus } from 'react-icons/fa';
-import { serverTimestamp } from 'firebase/firestore';
 import { Link } from 'react-router-dom';
 
 
 export const Cart = () => {
   // Obtener el estado y las funciones del carrito de compras
   const { cart, removeItem, updateQuantity, getTotal, setCart } = useContext(CartContext);
+
+  const updateStock = async (order) => {
+    try {
+      Object.values(order.items).forEach(async (item) => {
+        const itemRef = doc(db, "productos", item.id);
+        await updateDoc(itemRef, {
+          stock: increment(-order.items.quantity)
+        });
+      });
+    } catch (error) {
+      console.error(error);
+      // Show user-friendly error message
+      Swal.fire({
+        title: "Error",
+        text: "No se pudo actualizar el stock de los productos. Inténtalo de nuevo más tarde.",
+        icon: "error",
+      });
+    }
+  }
 
   const createOrder = () => {
     // Show SweetAlert2 form to enter buyer's name, email, and phone number
@@ -26,7 +44,7 @@ export const Cart = () => {
       showCancelButton: true,
       confirmButtonText: 'Confirmar',
       cancelButtonText: 'Cancelar'
-    }).then((result) => {
+    }).then(async (result) => {
       if (result.value) {
         // If the user confirms the order, get the buyer's name, email, and phone number from the form
         const name = document.getElementById('name').value;
@@ -42,20 +60,19 @@ export const Cart = () => {
           },
           date: serverTimestamp(),
           items: cart.map(item => ({
+            id: item.id,
             name: item.name,
             price: item.price,
             quantity: item.quantity
           })),
           total: getTotal()
         }
-        console.log(order);
 
-        const uploadOrderToFirestore = async () => {
+        const uploadOrderToFirestore = async() => {
           try {
             const newOrderRef = doc(collection(db, "orders"))
             await setDoc(newOrderRef, order);
-            // Clear the cart
-            setCart([]);
+
             // Show SweetAlert2 success message
             Swal.fire({
               title: "Compra realizada",
@@ -72,7 +89,13 @@ export const Cart = () => {
             });
           }
         }
-        uploadOrderToFirestore();
+        uploadOrderToFirestore()
+        .then(result => {
+          updateStock(order);
+
+          // Clear the cart
+          setCart([]);
+        });
       }
     });
   }
