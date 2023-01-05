@@ -29,6 +29,7 @@ export const AddToCart = (props) => {
   const handleAddToCart = () => {
     // Add the item to the cart
     const item = {
+      id: props.data.id,
       name: props.data.name,
       price: props.data.price,
       quantity: value,

@@ -15,10 +15,10 @@ export const Cart = () => {
 
   const updateStock = async (order) => {
     try {
-      Object.values(order.items).forEach(async (item) => {
+      order.items.forEach(async (item) => {
         const itemRef = doc(db, "productos", item.id);
         await updateDoc(itemRef, {
-          stock: increment(-order.items.quantity)
+          stock: increment(-item.quantity)
         });
       });
     } catch (error) {
@@ -68,6 +68,7 @@ export const Cart = () => {
           total: getTotal()
         }
 
+
         const uploadOrderToFirestore = async() => {
           try {
             const newOrderRef = doc(collection(db, "orders"))
@@ -101,13 +102,12 @@ export const Cart = () => {
   }
   
 
-
   if (cart.length === 0) {
     // Mostrar un mensaje si el carrito está vacío
     return (
       <div>
         <p>Su carrito está vacío</p>
-        <Button href="/tienda">Volver a la tienda</Button>
+        <Button as={Link} to="/tienda">Volver a la tienda</Button>
       </div>
     );
   }
