@@ -1,46 +1,37 @@
-import Button from "react-bootstrap/Button";
-import Card from "react-bootstrap/Card";
-import Carousel from "react-bootstrap/Carousel";
-import Col from "react-bootstrap/Col";
+import { Container, Row, Col, Card, Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
 const Item = (props) => {
-
+  let image;
+  if (props.images) {
+    image = props.images[0];
+  }
   return (
-    <Col xs={6} md={4} lg={3} className="">
-      <Card className="mb-4 itemCard">
-        <Carousel>
-          <Carousel.Item>
-            <img
-              className="d-block w-100"
-              src=""
-              alt=""
-            />
-          </Carousel.Item>
-          <Carousel.Item>
-            <img
-              className="d-block w-100"
-              src=""
-              alt=""
-            />
-          </Carousel.Item>
-          <Carousel.Item>
-            <img
-              className="d-block w-100"
-              src=""
-              alt=""
-            />
-          </Carousel.Item>
-        </Carousel>
-        <Card.Body>
-          <Card.Title>{props.name}</Card.Title>
-          <Card.Text>{props.price}</Card.Text>
-          <Link to={`/detalles/${props.id}`}>
-            <Button variant="primary">Go somewhere</Button>
-          </Link>
-        </Card.Body>
-      </Card>
-    </Col>
+        <Col md={10}>
+          <Card className="item-card card-body">
+            <Row className="item-card__row align-items-center align-items-lg-start">
+              <Col lg={2} className="item-card__image-container mr-2 mb-3 mb-lg-0">
+                <img
+                  src={image}
+                  alt="product"
+                  className="item-card__image img-fluid fixed-size"
+                />
+              </Col>
+              <Col lg={6} className="item-card__description-container media-body">
+                <h6 className="item-card__title media-title font-weight-semibold">
+                  <Link to={`/detalles/${props.id}`}>{props.name}</Link>
+                </h6>
+                <p className="item-card__text mb-3">{props.description}</p>
+              </Col>
+              <Col lg={4} className="item-card__price-container text-center">
+                <h3 className="item-card__price mb-0 font-weight-semibold">${props.price}</h3>
+                <Button variant="warning" className="item-card__button mt-4 text-white">
+                  <i className="icon-cart-add mr-2"></i> Add to cart
+                </Button>
+              </Col>
+            </Row>
+          </Card>
+        </Col>
   );
 };
 

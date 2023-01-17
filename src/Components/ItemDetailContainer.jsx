@@ -37,6 +37,8 @@ export const ItemDetailContainer = () => {
     };
 
     return(
-        <ItemDetailMap className="item-detail" datos={datos}/>
+        <Container>
+            <ItemDetailMap className="item-detail" datos={datos}/>
+        </Container>
     )
 }

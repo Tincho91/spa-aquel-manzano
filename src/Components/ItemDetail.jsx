@@ -5,31 +5,26 @@ import { Link } from 'react-router-dom';
 
 const ItemDetail = (props) => {
   return (
-    <Container className="itemDetailContainer">
-      <Row>
-        <Col xs={12} md={6}>
-          <Carousel>
-            <Carousel.Item>
-              <img className="d-block w-100" src="" alt="" />
+    <Container fluid className="itemDetailContainer h-100 d-flex align-items-stretch">
+      <Row className="h-100 w-100 align-items-center">
+        <Col xs={12} md={6} className="p-0">
+        <Carousel variant='dark' className="item-card__carousel h-100 w-100">
+          {props.images && props.images.map((image, index) => (
+            <Carousel.Item key={index}>
+              <img
+                className="d-block w-100 h-100 item-card__carousel-image h-100"
+                src={image}
+                alt=""
+              />
             </Carousel.Item>
-            <Carousel.Item>
-              <img className="d-block w-100" src="" alt="" />
-            </Carousel.Item>
-            <Carousel.Item>
-              <img className="d-block w-100" src="" alt="" />
-            </Carousel.Item>
-          </Carousel>
+          ))}
+        </Carousel>
         </Col>
-        <Col xs={12} md={6}>
-          <h1 className="itemTitle text-center">{props.title}</h1>
+        <Col xs={12} md={6} className="d-flex flex-column justify-content-center align-items-center p-5">
+          <h1 className="itemTitle text-center">{props.name}</h1>
           <p className="itemShortDescription">{props.description}</p>
           <h2 className="itemPrice">${props.price}</h2>
-          {/* Pass the stock prop to the AddToCart component */}
           <AddToCart data={props} />
-        </Col>
-      </Row>
-      <Row>
-        <Col>
           <Tabs defaultActiveKey="description" className="itemDetailsTabs">
             <Tab
               eventKey="description"
@@ -67,9 +62,9 @@ const ItemDetail = (props) => {
               </Table>
             </Tab>
           </Tabs>
+          <Button as={Link} to="/tienda">Volver a la tienda</Button>
         </Col>
       </Row>
-      <Button as={Link} to="/tienda">Volver a la tienda</Button>
     </Container>
   );
 };

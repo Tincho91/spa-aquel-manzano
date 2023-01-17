@@ -23,21 +23,21 @@ export const NavBar = () => {
             alt="Brand"
           />
         </Navbar.Brand>
-        <Nav className="m-auto">
-          <Nav.Link as={Link} to="/cart">
+        <Nav className="ms-auto pe-3">
+          <Nav.Link as={Link} to="/cart" className="text-dark navbar--cart">
             <FaShoppingCart /> {cartItems}
           </Nav.Link>
         </Nav>
-        <Navbar.Toggle aria-controls="basic-navbar-nav" />
+        <Navbar.Toggle aria-controls="basic-navbar-nav" className="navbar--button"/>
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="ms-auto">
-            <Nav.Link as={Link} to="/accesorios">
+            <Nav.Link as={Link} to="/accesorios" className="text-black navbar--link">
               Accesorios
             </Nav.Link>
-            <Nav.Link as={Link} to="/indumentaria">
+            <Nav.Link as={Link} to="/indumentaria" className="text-black navbar--link">
               Indumentaria
             </Nav.Link>
-            <Nav.Link as={Link} to="/blanqueria">
+            <Nav.Link as={Link} to="/blanqueria" className="text-black navbar--link">
               Blanquería
             </Nav.Link>
           </Nav>

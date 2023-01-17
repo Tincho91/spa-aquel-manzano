@@ -14,8 +14,7 @@ const ItemDetailMap = (props) => {
                 price = {item.price}
                 category = {item.category}
                 stock = {item.stock}
-
-                //images = {item.images}
+                images = {item.images}
                 //brand = {item.brand}
                 //material = {item.material}
                 //dimentions = {ite.dimention}

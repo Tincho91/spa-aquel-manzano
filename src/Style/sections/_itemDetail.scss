@@ -1,0 +1,19 @@
+@use '../custom' as *;
+
+.itemDetailContainer {
+    background-color: #f5f5f5;
+    }
+    
+    .item-card__carousel {
+    width: 100%;
+    }
+    
+    .item-card__carousel-image {
+    width: 100%;
+    height: auto;
+    }
+    
+    .itemDetailsTabs--specifications table {
+    width: 100%;
+    text-align: left;
+    }

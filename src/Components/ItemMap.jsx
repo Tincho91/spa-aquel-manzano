@@ -14,6 +14,7 @@ const ItemMap = (props) => {
                 description = {item.description}
                 price = {item.price}
                 category = {item.category}
+                images = {item.images}
             />
             )
         }
