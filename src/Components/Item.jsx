@@ -7,8 +7,8 @@ const Item = (props) => {
     image = props.images[0];
   }
   return (
-        <Col md={10}>
-          <Card className="item-card card-body">
+        <Col md={6}>
+          <Card className="item-card card-body mb-4">
             <Row className="item-card__row align-items-center align-items-lg-start">
               <Col lg={2} className="item-card__image-container mr-2 mb-3 mb-lg-0">
                 <img

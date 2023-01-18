@@ -1,14 +1,12 @@
 @use '../custom' as *;
 
 .loadingContainer {
+    display: grid;
+    place-items: center;
 
     .loading {
-        position: absolute;
         height: 4rem;
         width: 4rem;
         color: $girl;
-        top: 50%;
-        left: 50%;
-        right: 50%;
     }
 }

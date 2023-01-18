@@ -5,6 +5,7 @@ import { LandingCarrousel } from "./Components/LandingCarrousel";
 import { ItemDetailContainer } from "./Components/ItemDetailContainer";
 import { CartProvider } from "./Contexts/CartContext";
 import { Cart } from "./Components/Cart";
+import { Footer } from "./Components/Footer"
 
 
 const App = () => {
@@ -20,6 +21,7 @@ const App = () => {
           <Route path='/detalles/:itemId'  element={<ItemDetailContainer />} />
           <Route path='/cart'  element={<Cart />} />
         </Routes>
+        <Footer />
       </BrowserRouter>
     </CartProvider>
   )
