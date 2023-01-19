@@ -1,8 +1,8 @@
 @use '../custom' as *;
 
-.itemDetailContainer {
+.itemDetailContainer { 
     background-color: #f5f5f5;
-    }
+    margin-top: 3vh;
     
     .item-card__carousel {
     width: 100%;
@@ -17,3 +17,5 @@
     width: 100%;
     text-align: left;
     }
+
+}

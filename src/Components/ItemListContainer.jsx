@@ -37,7 +37,7 @@ export const ItemListContainer = () => {
 
     return (
       <>
-        <Container className="item-container d-flex ">
+        <Container className="item-container d-flex">
           <Row>
             <ItemMap className="" datos={datos} />
           </Row>

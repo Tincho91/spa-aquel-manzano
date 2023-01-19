@@ -25,7 +25,7 @@ const Item = (props) => {
               </Col>
               <Col lg={4} className="item-card__price-container text-center">
                 <h3 className="item-card__price mb-0 font-weight-semibold">${props.price}</h3>
-                <Button variant="warning" className="item-card__button mt-4 text-white">
+                <Button as={Link} to={`/detalles/${props.id}`} variant="warning" className="item-card__button mt-4 text-white">
                   <i className="icon-cart-add mr-2"></i> Add to cart
                 </Button>
               </Col>

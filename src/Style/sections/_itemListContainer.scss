@@ -1,2 +1,10 @@
 @use "../custom" as *;
 
+.item-container {
+    margin-bottom: 5vh;
+    margin-top: 3vh;
+
+    @include media-breakpoint-down(md) {
+        margin-bottom: 7vh;
+    }
+}
