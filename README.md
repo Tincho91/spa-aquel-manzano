@@ -1,8 +1,8 @@
 Bienvenido al repositorio de mi proyecto de React
 
-Este proyecto fue creado utilizando React junto con Vite como herramienta de desarrollo.
+Este proyecto fue creado utilizando React junto con Vite como herramienta de desarrollo. El mismo aún se encuentra en en producción, ya que por cuestiones personales solo pude darle las funcionalidades básicas para su aprobación.
 
-Para los estilos se utilizó React Bootstrap y Sass.
+Para los estilos se utilizó React-Bootstrap y Sass.
 
 La conexión a la base de datos se realiza mediante Firebase, permitiendo la actualización del stock de los productos una vez generada la orden de compra. Durante el proceso de fetching se muestra una animación de carga.
 
